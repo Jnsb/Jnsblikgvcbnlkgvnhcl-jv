@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>------ JOGO_DO_CORRE ------</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://code.jquery.com/jquery-3.2.1.js" ></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/humanity/jquery-ui.css"/>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" ></script>
+
+        <style>
+            .drag{cursor: move;}
+
+        </style>
+
+        <script>
+            var topAbsolute = 0;
+            var topAbsolute1 = 0;
+            var topAbsolute2 = 0;
+            var topAbsolute3 = 0;
+            var topAbsolute4 = 0;
+
+            $(function () {
+                $(".drag").draggable({containment: "parent"});
+
+                topAbsolute =  $("#pc1").offset().top;
+                topAbsolute1 = $("#pc2").offset().top;
+                topAbsolute2 = $("#pc3").offset().top;
+                topAbsolute3 = $("#pc4").offset().top;
+                topAbsolute4 = $("#pc5").offset().top;
+
+
+
+                setInterval(maquina, 100);
+            });
+
+            function maquina() {
+                var decisao;
+                var distancia = 200;
+
+                var decisao = Math.random();
+                var pAux = 0;
+
+                if (decisao > 0.5) {
+                    decisao = Math.random();
+                    if (decisao > 0.5) {
+                        pAux = (distancia * Math.random());
+                        if (topAbsolute - pAux > $("#limites").offset().top) {
+                            topAbsolute = topAbsolute - pAux;
+                            $("#pc1").animate({top: "-=" + pAux + "px"}, 500);
+                        } else if (topAbsolute + pAux > $("#limites").offset().top) {
+                            topAbsolute = topAbsolute + pAux;
+                            $("#pc1").animate({top: "+=" + pAux + "px"}, 500);
+
+                        }
+                    }
+                    var decisao1 = Math.random();
+                    var pAux1 = 0;
+                    if (decisao1 > 0.5) {
+                        decisao1 = Math.random();
+                        if (decisao1 > 0.5) {
+                            pAux1 = (distancia * Math.random());
+                            if (topAbsolute1 - pAux1 > $("#limites").offset().top) {
+                                topAbsolute1 = topAbsolute1 - pAux1;
+                                $("#pc2").animate({top: "-=" + pAux1 + "px"}, 500);
+                            } else if (topAbsolute1 + pAux1 > $("#limites").offset().top) {
+                                topAbsolute1 = topAbsolute1 + pAux1;
+                                $("#pc2").animate({top: "+=" + pAux1 + "px"}, 500);
+
+                            }
+                        }
+                        var decisao2 = Math.random();
+                        var pAux2 = 0;
+                        if (decisao2 > 0.5) {
+                            decisao2 = Math.random();
+                            if (decisao2 > 0.5) {
+                                pAux2 = (distancia * Math.random());
+                                if (topAbsolute2 - pAux2 > $("#limites").offset().top) {
+                                    topAbsolute2 = topAbsolute2 - pAux2;
+                                    $("#pc3").animate({top: "-=" + pAux2 + "px"}, 500);
+                                } else if (topAbsolute2 + pAux2 > $("#limites").offset().top) {
+                                    topAbsolute2 = topAbsolute2 + pAux2;
+                                    $("#pc3").animate({top: "+=" + pAux2 + "px"}, 500);
+
+                                }
+                            }
+                            var decisao3 = Math.random();
+                            var pAux3 = 0;
+                            if (decisao3 > 0.5) {
+                                decisao3 = Math.random();
+                                if (decisao3 > 0.5) {
+                                    pAux3 = (distancia * Math.random());
+                                    if (topAbsolute3 - pAux3 > $("#limites").offset().top) {
+                                        topAbsolute3 = topAbsolute3 - pAux3;
+                                        $("#pc4").animate({top: "-=" + pAux3 + "px"}, 500);
+                                    } else if (topAbsolute3 + pAux3 > $("#limites").offset().top) {
+                                        topAbsolute3 = topAbsolute3 + pAux3;
+                                        $("#pc4").animate({top: "+=" + pAux3 + "px"}, 500);
+
+                                    }
+                                }
+                            }
+                            var decisao4 = Math.random();
+                            var pAux4 = 0;
+                            if (decisao4 > 0.5) {
+                                decisao4 = Math.random();
+                                if (decisao4 > 0.5) {
+                                    pAux4 = (distancia * Math.random());
+                                    if (topAbsolute4 - pAux4 > $("#limites").offset().top) {
+                                        topAbsolute4 = topAbsolute4 - pAux4;
+                                        $("#pc5").animate({top: "-=" + pAux4 + "px"}, 500);
+                                    } else if (topAbsolute4 + pAux4 > $("#limites").offset().top) {
+                                        topAbsolute4 = topAbsolute4 + pAux4;
+                                        $("#pc5").animate({top: "+=" + pAux4 + "px"}, 500);
+
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+
+
+    </head>
+    <body>
+        <div id="limites" class ="a" style="border:solid; position:absolute; top:27.5%; left: 20.3%; height: 62%; width: 63.5%; background-color: transparent">
+
+            <div id="jogador" class="drag" style="top:50%;right: 0%;position: absolute; width: 50px;height: 50px; 
+                 border: 1px solid black; background: linear-gradient(to bottom, black, lightseagreen);"></div>
+            <div id="pc1" class="drag1" style="top:50%;left: 0.5%;position: absolute; width: 60px;height: 60px; 
+                 border: 1px solid black; background: linear-gradient(to bottom, white, black);"></div>
+            <div id="pc2" class="drag2" style="top:50%;left: 20%;position: absolute; width: 60px;height: 60px; 
+                 border: 1px solid black; background: linear-gradient(to bottom, white, black);"></div>
+            <div id="pc3" class="drag3" style="top:50%;left: 40%;position: absolute; width: 60px;height: 60px; 
+                 border: 1px solid black; background: linear-gradient(to bottom, white, black);"></div>
+            <div id="pc4" class="drag4" style="top:50%;left: 60%;position: absolute; width: 60px;height: 60px; 
+                 border: 1px solid black; background: linear-gradient(to bottom, white, black);"></div>
+            <div id="pc5" class="drag5" style="top:50%;left: 80%;position: absolute; width: 60px;height: 60px; 
+                 border: 1px solid black; background: linear-gradient(to bottom, white, black);"></div>
+
+        </div>
+        <img src="plano de fundo.jpg" alt="" style="background-size:100%; width: 100%; height:100%; position: absolute; z-index: -5; left: 0px; top: 0px;text-align: center;"/>
+
+    </body>
+</html>

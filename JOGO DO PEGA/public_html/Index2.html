@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JOGO DO PEGA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+        ></script>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/humanity/jquery-ui.css"/>
+
+        <script
+            src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+        ></script>
+
+        <style>
+            .drag{cursor: move;}
+            .movendo{background: black;}
+
+            p{
+                color: white;
+                font-size:23px;
+                font-style: initial;
+
+            }
+        </style>
+        <script>
+
+            //a variável tem que ficar aqui fora porque é global
+            var topAbsolute = 0;
+            var leftAbsolute = 0;
+
+            $(function () {
+                $(".drag").draggable({containment: "parent"});
+
+
+                //variável que vai controlar a posição Top absoluta do computer.
+                //use o offset porque pega a posição absoluta.
+                topAbsolute = $("#div3").offset().top;
+                leftAbsolute = $("#div3").offset().left;
+                setInterval(computer, 100);
+            });
+
+            //O metodo que da o movimento ao pc e limitar
+            function computer() {
+
+                var decisao;
+                var distancia = 200;
+
+                var decisao = Math.random();
+                var pAux = 0;
+
+                //irá subir ou descer
+                if (decisao > 0.5) {
+
+                    //gera nova decisão pra saber se vai pra cima ou para baixo
+                    decisao = Math.random();
+
+                    if (decisao > 0.5) {
+                        //vai subir
+
+                        //gera a distancia de subida
+                        pAux = (distancia * Math.random());
+
+                        //verifica se o movimento a ser inserido faz com que o inimigo passe do limite
+                        //o sinal de maior indica que a posição top está do elemento está abaixo do limite
+                        if (topAbsolute - pAux > $("#limites").offset().top) {
+                            topAbsolute = topAbsolute - pAux;
+                            $("#div3").animate({top: "-=" + pAux + "px"}, 500);
+                        } else if (topAbsolute + pAux > $("#limites").offset().top) {
+                            topAbsolute = topAbsolute + pAux;
+                            $("#div3").animate({top: "+=" + pAux + "px"}, 500);
+
+                        }
+                        if (leftAbsolute - pAux > $("#limites").offset().left) {
+                            leftAbsolute = leftAbsolute - pAux;
+                            $("#div3").animate({left: "-=" + pAux + "px"}, 500);
+                        } else if (leftAbsolute + pAux > $("#limites").offset().left) {
+                            leftAbsolute = leftAbsolute + pAux;
+                            $("#div3").animate({left: "+=" + pAux + "px"}, 500);
+                          
+                        }
+                    }
+
+                }
+            }
+
+
+            ;
+            // esse (tween), seria a 4ª coluna do animate, eu tentei fazer assim mas não ta indo, e tbm já são 00:09. Já ta na hora de enviar o projeto.
+            var nivel = 0;
+            function Niveis() {
+                if(nivel ===1){
+                    tween = 500;
+                }
+                if (nivel === 2) {
+                    tween = 400;
+                }
+                if (nivel === 3) {
+                    tween = 300;
+                }
+                if (nivel === 4) {
+                    tween = 150;
+                }
+                if (nivel === 5) {
+                    alert("AEEEEEEEE - ACABOU!\n\
+                                 PARABÉNS!");
+                    nivel = 1;
+                    PassaNivel();
+                    return;
+                }
+
+            }
+            function PassaNivel() {
+                if (document === 2) {
+                    $("#meuparag")++ && nivel++;
+                }
+                if (document === 4) {
+                    $("#meuparag")++ && nivel++;
+                }
+                if (document === 6) {
+                    $("#meuparag")++ && nivel++;
+                }
+                if (document === 8) {
+                    $("#meuparag")++ && nivel++;
+                }
+                if (document === 10) {
+                    $("#meuparag")++ && nivel++;
+                }
+            }
+
+        </script>
+
+
+    </head>
+    <body>
+        <div id="limites" class ="a" style="border:solid; position:absolute; top:27.5%; left: 20.3%; height: 62%; width: 63.5%; background-color: transparent">
+
+            //Jogador
+            <div id="div2" class="drag" style="top:60%;right: 50%;position: absolute; width: 60px;height: 60px; 
+                 border: 1px solid black; background: linear-gradient(to bottom, white, grey);"><img src="GretchenEt formatado.jpg" style=" width:60px;height:60px"/></div>
+
+            //Computador
+            <div onmouseover="document.getElementById('meuparag').innerHTML += a++" 
+                 onmouseout="document.getElementById('meuparag').function(a++)"
+
+                 id="div3" class="drag1" style="top:50%;left: 50%;position: absolute; width: 60px;height: 60px; 
+                 border: 1px solid black; background: linear-gradient(to bottom, white, yellow);"> <img src="gold.png" style=" width:60px;height:60px"/></div>
+        </div>
+        <img src="plano de fundo.jpg" alt="" style="background-size:100%; width: 100%; height:100%; position: absolute; z-index: -5; left: 0px; top: 0px;text-align: center;"/>
+        <script>
+            var a = 0;
+        </script>
+        <p id="meuparag" style="background-color: transparent; " >PONTUAÇÃO: </p>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+{
+    "name": "JOGO_DO_PEGA",
+    "version": "1.0.0",
+    "keywords": ["util", "functional", "server", "client", "browser"],
+    "author": "MEU",
+    "contributors": [],
+    "dependencies": {}
+}
